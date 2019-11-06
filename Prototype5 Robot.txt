@@ -1,0 +1,95 @@
+Prototype5 v1.0 by Simon Gross 11/6/2019
+
+Overview:
+
+Protype is a multifunctional robot created with Lego Mindstorms EV3 and coded using ev3dev2 debian stretch python. 
+The robot has four main modes:
+1. Autonomous Mode
+2. Data Collection Mode
+3. Remote Mode
+4. Beacon Mode
+
+Sensors:
+
+The robot utlises 1st and 3rd party sensors including port splitters. 
+
+First party sensors include:
+1. EV3 Ultrasonic sensor
+2. EV3 Infrared Sensor
+3. EV3 Temperature Sensor
+4. NXT Sound Sensor
+5. EV3 Gyro Sensor
+
+Third Party Sensor:
+1. NXT HiTechnic Barometer
+2. EV3 Sensor Mux
+3. NXT-Split-Port V2
+
+Motors:
+
+The robot utilises 2X Lego medium motors and 2X Lego large motors
+
+Autonomous Mode
+
+The Autonomous mode allows the robot to randomly select the steering angle between 35 and 50, and the number of rotations between 3 and 5 per turn.
+When it detects a nearby obstacle at 30cm via Ultrasonic sensor, it will stop, reverse and randomly alter its direction and continue driving forward.
+In addition, during the short window where the robot stops, if you clap or produce a loud sound, this activates an additional mode.
+The loud sound activates the robot to grab an object placed in front of it with a claw and lifts up the object.The robot will then select a random direction 
+and drive forward until it detects another object and will then release the object from its claw. This mode utilises 2X medium motors, 2X large motors,
+sound sensor and the ultrasonic sensor.
+
+Data Collection Mode
+
+This mode uses two threads, meaning it runs two programs concurrently. The first program uses a variety of sensors to collect data, while the second program
+allows the robot to run autonomously and avoid obstacles via ultrasonic sensor. The data collection mode collects data from the following sensors: temperature from the thermometer sensor,
+temperature and atomspheric pressure from the Barometer, angle in degrees of the robot using the gyro and the sound pressure from the sound sensor.
+Not only is the data displayed in the terminal, it also records the data and writes it to an csv which is stored on the Brick. The data document can be uploaded
+from the brick onto the desktop.The program can be altered to allow the robot to collect data ever time in seconds, minutes and hours. This program utlises all the
+sensors except for the infrared sensor and all the motors.
+
+Remote mode
+
+This mode allows the use of the remote beacon device to control the robot remotely via infrared sensor. The claw function has not been remotely implemented yet.
+
+Beacon mode
+
+This mode activates the robot to detect and follow the beacon via infrared when a button is pressed.
+
+
+Programs and Packages needed:
+
+Visual Studio Code with ev3dev2 stretch device browser extension
+Image file: ev3dev-stretch=ev3-generic
+Kernel version: 4.16.96-ev3dev-2.3.2-ev3
+
+
+Starting the robot:
+
+After mounting a micro-SD card with the required image file, insert into EV3 Brick. Turn on Brick via central button and wait a couple of minutes until activated.
+Either plug in the brick via mini-USB or via Atheros AR9271 802.11n 150Mbps Wireless USB WiFi Adapter.
+Run the program and it will carry out a test to see whether all sensors are able to be detected. See image included to see how to wire everything up.
+Then choose which mode you wish to run on the EV3 Brick:
+UP button - Beacon mode
+LEFT button - Remote mode
+RIGHT button - Autonomous mode
+DOWN button - Data collection mode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
